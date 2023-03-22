@@ -27,6 +27,16 @@
       <a routerLink="/products" class="hover:underline">Products</a>
     </li>
     <li><a routerLink="/cart" class="hover:underline">Cart(0)</a></li>
-    <li><a routerLink="/login" class="hover:underline">Login</a></li>
+    <ng-container *ngIf="!signupService.isLogin; else logout">
+      <li><a routerLink="/login" class="hover:underline">Login</a></li>
+    </ng-container>
+
+    <ng-template #logout>
+      <li>
+        <a routerLink="/logout" class="hover:underline" (click)="handleLogout()"
+          >Logout</a
+        >
+      </li>
+    </ng-template>
   </ul>
 </nav>

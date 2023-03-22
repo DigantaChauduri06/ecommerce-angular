@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SignupService } from '../../services/signup.service';
 
 @Component({
   selector: 'app-header',
@@ -6,8 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  constructor(public signupService: SignupService) {}
   searchText: string = '';
   searchProduct() {
     // console.log(this.searchText);
+  }
+  isLogin: boolean = false;
+  handleLogout() {
+    this.signupService.logout();
   }
 }

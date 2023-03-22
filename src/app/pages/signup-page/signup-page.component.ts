@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SignupService } from 'src/app/services/signup.service';
 import { Signup } from '../../models/auth';
 
@@ -9,7 +10,11 @@ import { Signup } from '../../models/auth';
   styleUrls: ['./signup-page.component.scss'],
 })
 export class SignupPageComponent {
-  constructor(private signupService: SignupService, private fb: FormBuilder) {}
+  constructor(
+    private signupService: SignupService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
   signupForm = this.fb.group({
     name: [''],
     email: [''],
@@ -19,8 +24,11 @@ export class SignupPageComponent {
   onSubmit() {
     this.preview = this.signupForm.value;
     if (this.preview.email && this.preview.password && this.preview.name) {
-      this.signupService.userSignup(this.preview).subscribe((data) => {
-        console.log(data);
+      this.signupService.userSignup(this.preview).subscribe((data: any) => {
+        // console.log(data);
+        localStorage.setItem('CID', data['id']);
+        this.signupService.isLogin = true;
+        this.router.navigate(['/home']);
       });
     } else {
       alert('Please provide all the details');

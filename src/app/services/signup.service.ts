@@ -10,4 +10,10 @@ export class SignupService {
   userSignup(data: Signup) {
     return this.http.post('http://localhost:3000/users', data, {});
   }
+  isLogin: boolean = localStorage.getItem('CID') ? true : false;
+  logout() {
+    // TODO: CREATE A MODAL FOR CONFIRMATION
+    localStorage.clear();
+    this.isLogin = false;
+  }
 }
