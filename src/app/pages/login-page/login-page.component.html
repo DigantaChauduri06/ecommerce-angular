@@ -20,7 +20,13 @@
             Create a free account
           </a>
         </p>
-        <form action="#" method="POST" class="mt-8">
+        <form
+          action="#"
+          method="POST"
+          class="mt-8"
+          [formGroup]="signinForm"
+          (submit)="onSubmit()"
+        >
           <div class="space-y-5">
             <div>
               <label
@@ -34,6 +40,7 @@
                   class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                   type="email"
                   placeholder="Email"
+                  formControlName="email"
                 />
               </div>
             </div>
@@ -58,6 +65,7 @@
                   class="flex h-10 w-full rounded-md border border-gray-300 bg-transparent py-2 px-3 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
                   type="password"
                   placeholder="Password"
+                  formControlName="password"
                 />
               </div>
             </div>

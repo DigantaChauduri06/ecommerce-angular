@@ -7,8 +7,14 @@ import { Signup } from '../models/auth';
 })
 export class SignupService {
   constructor(private http: HttpClient) {}
+
   userSignup(data: Signup) {
-    return this.http.post('http://localhost:3000/users', data, {});
+    return this.http.post('http://localhost:3000/users', data, {
+      observe: 'response',
+    });
+  }
+  isUserPresent(email: string) {
+    return this.http.get(`http://localhost:3000/users?email=${email}`);
   }
   isLogin: boolean = localStorage.getItem('CID') ? true : false;
   logout() {

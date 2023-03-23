@@ -11,6 +11,12 @@
       "email": "harelawot@mailinator.com",
       "password": "Pa$$w0rd!",
       "id": 2
+    },
+    {
+      "name": "Lara Faulkner",
+      "email": "fopegebymi@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "id": 3
     }
   ],
   "products": [
