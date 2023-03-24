@@ -1,1 +1,3 @@
-<p>home-page works!</p>
+<ng-container *ngFor="let product of data">
+  <app-product-card [product]="product"></app-product-card>
+</ng-container>

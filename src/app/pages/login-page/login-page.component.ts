@@ -26,9 +26,16 @@ export class LoginPageComponent {
     if (this.preview.email && this.preview.password) {
       this.signupService
         .isUserPresent(this.preview.email)
-        .subscribe((result: Array<any>) => {
+        .subscribe((result: any) => {
           // console.log('res ', result);
-          if (result.length) return;
+          if (result.length === 0) return;
+          else {
+            if (result[0].password === this.preview.password) {
+              localStorage.setItem('CID', result[0].id);
+              this.signupService.isLogin = true;
+              this.router.navigate(['/home']);
+            }
+          }
         });
     }
   }
