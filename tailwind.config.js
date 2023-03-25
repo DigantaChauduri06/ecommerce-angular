@@ -4,7 +4,11 @@ module.exports = {
     "./src/**/*.{html,ts}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        "card-height": "30rem",
+      }
+    },
   },
   plugins: [],
 }

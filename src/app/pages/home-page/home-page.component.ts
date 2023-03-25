@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignupService } from '../../services/signup.service';
-import { ProductsService } from '../../services/products.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { SignupService } from 'src/app/services/signup.service';
 import { AllProdcuts } from '../../models/all-prodcuts';
 
 @Component({

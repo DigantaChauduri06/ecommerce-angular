@@ -10,13 +10,43 @@
 "count": 120
 } -->
 
-<div class="card">
-  <img [src]="product.image" class="card-img-top" alt="..." class="w-56" />
-  <div class="card-body">
-    <h5 class="card-title">{{ product.title }}</h5>
-    <p class="card-text">{{ product.description }}</p>
-    <p class="card-text">
-      <small class="text-muted">{{ product.price }}</small>
+<div
+  class="card border-2 h-max pb-6 rounded-xl w-5/6 border-gray-200 px-3 py-6 mt-2 bg-gray-50"
+>
+  <img
+    [src]="product.image"
+    class="card-img-top"
+    alt="..."
+    class="h-48 block img"
+  />
+  <div class="card-body flex flex-col mt-10">
+    <h5 class="font-semibold text-center text-lg">
+      {{ product.title | slice : 0 : 36 }}
+      <span *ngIf="productCount !== undefined" class="text-sm text-gray-500"
+        >(X {{ productCount }})</span
+      >
+    </h5>
+    <p
+      class="card-text slef-end self-end p-1 pr-4 text-orange-500 font-bold"
+      *ngIf="productCount !== undefined"
+    >
+      {{ product.price * productCount | currency }}
+    </p>
+    <p
+      class="card-text slef-end self-end p-1 pr-4 text-orange-500 font-bold"
+      *ngIf="productCount === undefined"
+    >
+      {{ product.price | currency }}
+    </p>
+    <p class="card-text text-sm p-4">
+      {{ product.description | slice : 0 : 120 }}...
     </p>
   </div>
+  <button
+    class="w-full h-10 rounded-lg text-white bg-blue-500 cursor-pointer"
+    (click)="addToCart()"
+    *ngIf="productCount === undefined"
+  >
+    Add To Cart
+  </button>
 </div>

@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ProductsService } from 'src/app/services/products.service';
 import { AllProdcuts } from '../../models/all-prodcuts';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -9,7 +9,12 @@ import { AllProdcuts } from '../../models/all-prodcuts';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product: AllProdcuts = {} as AllProdcuts;
+  @Input() productCount: number | undefined = undefined;
+  constructor(private cartService: CartService) {}
   ngOnInit() {
     // console.log(this.product);
+  }
+  addToCart() {
+    this.cartService.addToCart(this.product);
   }
 }

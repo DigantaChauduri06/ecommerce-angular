@@ -1,3 +1,5 @@
-<ng-container *ngFor="let product of data">
-  <app-product-card [product]="product"></app-product-card>
-</ng-container>
+<div class="grid gap-y-12 grid-cols-3 mt-8 border-none">
+  <div *ngFor="let product of data">
+    <app-product-card [product]="product"></app-product-card>
+  </div>
+</div>
