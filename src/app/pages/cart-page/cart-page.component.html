@@ -1,9 +1,9 @@
 <div *ngIf="products.length === 0; else elseBlock">
   <div class="flex flex-col items-center justify-center h-full mt-10">
     <img
-      src="../../../assets/images/empty-cart.svg"
+      src="../../../assets/images/empty-cart-2.svg"
       alt="empty cart"
-      class="w-1/5 text-gray-500 fill-transparent opacity-75"
+      class="w-1/4 text-gray-500 fill-transparent"
     />
     <h2 class="text-2xl font-semibold mt-28">Your cart is empty</h2>
     <p class="text-gray-500">Add something to make me happy :)</p>
@@ -19,12 +19,12 @@
 
 <!-- If CART HAS ITEMS -->
 <ng-template #elseBlock>
-  <div class="flex flex-col mx-auto max-w-full p-6 space-y-4 sm:p-10">
-    <h2 class="text-xl font-semibold">Your cart</h2>
+  <div class="flex flex-col mx-auto max-w-full p-6 space-y-4 sm:p-10 h-full">
+    <h2 class="text-2xl font-semibold">Your cart</h2>
 
     <ul
       *ngFor="let product of productMap | keyvalue"
-      class="flex flex-col divide-y divide-gray-700"
+      class="flex flex-col divide-y divide-gray-700 border-b-2 rounded-bl-xl rounded-br-xl shadow-sm border-gray-300 px-10"
     >
       <app-product-cart-horizontal
         [productCount]="product.value[0]"
@@ -34,7 +34,7 @@
 
     <!-- TOTAL MONEY -->
 
-    <div class="space-y-1 text-right">
+    <div class="space-y-1 text-right justify-end">
       <p>
         Total amount:
         <span class="font-semibold">{{ cartValue | currency }}</span>
@@ -43,13 +43,16 @@
     <div class="flex justify-end space-x-4">
       <button
         type="button"
-        class="px-6 py-2 border rounded-md"
+        class="px-6 py-2 border rounded-md hover:bg-green-400 hover:text-white hover:transition-all"
         (click)="navigateToShop()"
       >
         Back
         <span class="sr-only sm:not-sr-only">to shop</span>
       </button>
-      <button type="button" class="px-6 py-2 border rounded-md">
+      <button
+        type="button"
+        class="px-6 py-2 border rounded-md hover:bg-blue-500 hover:text-white hover:transition-all"
+      >
         <span class="sr-only sm:not-sr-only">Continue to</span>
         Checkout
       </button>

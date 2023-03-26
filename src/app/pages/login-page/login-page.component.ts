@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Signup } from 'src/app/models/auth';
@@ -9,7 +9,7 @@ import { SignupService } from 'src/app/services/signup.service';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
   constructor(
     private signupService: SignupService,
     private router: Router,
@@ -37,6 +37,13 @@ export class LoginPageComponent {
             }
           }
         });
+    }
+  }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('CID')) {
+      this.signupService.isLogin = true;
+      this.router.navigate(['/home']);
     }
   }
 }

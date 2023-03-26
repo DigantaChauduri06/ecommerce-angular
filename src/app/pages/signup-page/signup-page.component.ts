@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SignupService } from 'src/app/services/signup.service';
@@ -9,7 +9,7 @@ import { Signup } from '../../models/auth';
   templateUrl: './signup-page.component.html',
   styleUrls: ['./signup-page.component.scss'],
 })
-export class SignupPageComponent {
+export class SignupPageComponent implements OnInit {
   constructor(
     private signupService: SignupService,
     private fb: FormBuilder,
@@ -32,6 +32,12 @@ export class SignupPageComponent {
       });
     } else {
       alert('Please provide all the details');
+    }
+  }
+  ngOnInit(): void {
+    if (localStorage.getItem('CID')) {
+      this.signupService.isLogin = true;
+      this.router.navigate(['/home']);
     }
   }
 }

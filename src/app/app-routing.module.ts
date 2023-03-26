@@ -9,7 +9,7 @@ import { ProductsPageComponent } from './pages/products-page/products-page.compo
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent },
   { path: 'signup', component: SignupPageComponent },
